@@ -52,15 +52,18 @@ public class Journal
     {
         // make sure all entries are saved before loading file
         // Clear out _entries to be able to pull fresh journal entries
-        if (_entries.Count > 0) {
+        if (_entries.Count > 0)
+        {
             // ask if want to save work first
             Console.Write("Would you like to save first? (y or n)");
             string input = Console.ReadLine();
-            if (input == "y") {
+            if (input == "y")
+            {
                 // Save the journal to file of user's choice
                 Console.WriteLine("Enter file to save journal: ");
                 string fileToSave = Console.ReadLine();
                 SaveToFile(fileToSave);
+            }
 
             // clear _entries
             _entries.Clear();
