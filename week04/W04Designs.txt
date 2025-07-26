@@ -1,0 +1,57 @@
+YouTubeVideos Design
+
+Video
+- _title: string
+- _author: string
+- _length: int
+- _comments: List<Comment>
+
+- NumberOfComments(): int
+- GetDisplayText(): string
+
+Comment
+- _name: string
+- _comment: string
+
+- GetDisplayText(): string
+
+
+
+
+OnlineOrdering Design
+
+Address
+- _streetAddress: string
+- _city: string
+- _state: string
+- _country: string
+
+- IsInUSA(): boolean
+- GetFullAddress(): string
+
+Customer
+- _name: string
+- _address: Address
+
+- IsInUSA(): boolean
+- GetShippingLabel(): string
+
+Product
+- _name: string
+- _productID: int
+- _price: double
+- _quantity: int
+
+- GetTotalCost(): double
+- GetPackingLabel(): string
+
+Order
+- SHIPPING_USA: double
+- SHIPPING_FOREIGN: double
+- _products: List<Product>
+- _customer: Customer
+
+- _GetTotalCost(): double
+- _GetPackingLabel(): string
+- _GetShippingLabel(): string
+- _GetShippingCost(): double
