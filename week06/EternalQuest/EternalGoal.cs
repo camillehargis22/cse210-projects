@@ -10,7 +10,7 @@ public class EternalGoal : Goal
     // override methods
     public override void RecordEvent()
     {
-
+        Console.WriteLine($"\nCongratulations! You have earned {GetPoints()} points!");
     }
 
     public override bool IsComplete()
@@ -18,8 +18,13 @@ public class EternalGoal : Goal
         return false;
     }
 
+    public override string GetDetailsString()
+    {
+        return $"[ ] {base.GetDetailsString()}";
+    }
+
     public override string GetStringRepresentation()
     {
-        return "text";
+        return base.GetStringRepresentation();
     }
 }

@@ -16,10 +16,21 @@ public class Goal
         _points = points;
     }
 
+    // getters and setters
+    public string GetShortName()
+    {
+        return _shortName;
+    }
+
+    public string GetPoints()
+    {
+        return _points;
+    }
+
     // virtual methods
     public virtual void RecordEvent()
     {
-
+        
     }
 
     public virtual bool IsComplete()
@@ -29,11 +40,16 @@ public class Goal
 
     public virtual string GetDetailsString()
     {
-        return "text";
+        return $"{_shortName} ({_description})";
     }
 
     public virtual string GetStringRepresentation()
     {
-        return "text";
+        return $"{_shortName}~|~{_description}~|~{_points}";
+    }
+
+    public virtual int GetBonus()
+    {
+        return 0;
     }
 }

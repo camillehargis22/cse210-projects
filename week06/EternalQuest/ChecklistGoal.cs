@@ -6,12 +6,19 @@ public class ChecklistGoal : Goal
     private int _target;
     private int _bonus;
 
-    // constructor
+    // constructors
     public ChecklistGoal(string name, string description, string points, int target, int bonus) : base(name, description, points)
     {
         _target = target;
         _bonus = bonus;
         _amountCompleted = 0;
+    }
+
+    public ChecklistGoal(string name, string description, string points, int amountCompleted, int target, int bonus) : base(name, description, points)
+    {
+        _target = target;
+        _bonus = bonus;
+        _amountCompleted = amountCompleted;
     }
 
     // getters and setters
@@ -23,21 +30,49 @@ public class ChecklistGoal : Goal
     // override methods
     public override void RecordEvent()
     {
-
+        SetAmountCompleted(_amountCompleted + 1);
+        int points = int.Parse(GetPoints()) + GetBonus();
+        Console.WriteLine($"\nCongratulations! You have earned {points} points!");
     }
 
     public override bool IsComplete()
     {
-        return false;
+        if (_amountCompleted == _target)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public override string GetDetailsString()
     {
-        return "text";
+        if (this.IsComplete())
+        {
+            return $"[X] {base.GetDetailsString()} -- Currently completed: {_amountCompleted}/{_target}";
+        }
+        else
+        {
+            return $"[ ] {base.GetDetailsString()} -- Currently completed: {_amountCompleted}/{_target}";
+        }
     }
 
     public override string GetStringRepresentation()
     {
-        return "text";
+        return $"{base.GetStringRepresentation()}~|~{_amountCompleted}~|~{_target}~|~{_bonus}";
+    }
+
+    public override int GetBonus()
+    {
+        if (this.IsComplete())
+        {
+            return _bonus;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
